@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Better Unique Isaac Fight</name>
+    <directory>better_unique_isaac_fight</directory>
+    <id>3200941142</id>
+    <description>That mod is a reworked version of Unique Isaac Boss Fight created by Laraz (available here: https://steamcommunity.com/sharedfiles/filedetails/?id=2563988750)
+
+Reworked Enemies and Bosses is highly recommended
+
+Main changes between this mod and Laraz' version:
+- All sprites are remade in mind of Reworked Foes mod
+- Lazarus and Judas won't fight their postmortem versions (Lazarus II and Dark Judas) but instead they'll fight against purified version of themselfs
+- Azazel's spirite has been replaced by Repented Azazel from Salvation mod</description>
+    <version>1.2</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Bosses"/>
+    <tag id="Tweaks"/>
+    <tag id="Graphics"/>
+</metadata>
