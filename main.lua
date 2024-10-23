@@ -17,8 +17,7 @@ function MOD:OnFrame()
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/boss_075_isaac.png")
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_JUDAS or playertype == PlayerType.PLAYER_JUDAS_B or playertype == PlayerType.PLAYER_BLACKJUDAS then
-				sprite:ReplaceSpritesheet(0,
-					"gfx/dudes/Judas/" .. modconfig.getSelectedJudasVariant() .. "/boss_075_isaac.png")
+				sprite:ReplaceSpritesheet(0, MOD:returnJudasVariantPath())
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_BLUEBABY or playertype == PlayerType.PLAYER_BLUEBABY_B then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/BlueBaby/boss_075_isaac.png")
@@ -30,12 +29,12 @@ function MOD:OnFrame()
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Samson/boss_075_isaac.png")
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_AZAZEL or playertype == PlayerType.PLAYER_AZAZEL_B then
-				print("gfx/dudes/Azazel/" .. modconfig.getSelectedAzazelVariant()  .. "/boss_075_isaac.png")
-				sprite:ReplaceSpritesheet(0, "gfx/dudes/Azazel/" .. modconfig.getSelectedAzazelVariant()  .. "boss_075_isaac.png")
+				sprite:ReplaceSpritesheet(0, MOD:returnAzazelVariantPath())
 				sprite:LoadGraphics()
-			elseif playertype == PlayerType.PLAYER_LAZARUS or PlayerType.PLAYER_LAZARUS2 or playertype == PlayerType.PLAYER_LAZARUS_B or playertype == PlayerType.PLAYER_LAZARUS2_B then
-				sprite:ReplaceSpritesheet(0,
-					"gfx/dudes/Lazarus/" .. modconfig.getSelectedLazarusVariant() .. "/boss_075_isaac.png")
+			-- or PlayerType.PLAYER_LAZARUS2
+			elseif playertype == PlayerType.PLAYER_LAZARUS or playertype == PlayerType.PLAYER_LAZARUS_B or playertype == PlayerType.PLAYER_LAZARUS2_B then
+				-- Lazarus Risen is cut off because for some reason he replaces other characters above him
+				sprite:ReplaceSpritesheet(0, MOD:returnLazarusVariantPath())
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_EDEN or playertype == PlayerType.PLAYER_EDEN_B then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Eden/boss_075_isaac.png")
@@ -50,7 +49,8 @@ function MOD:OnFrame()
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Keeper/boss_075_isaac.png")
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_APOLLYON or playertype == PlayerType.PLAYER_APOLLYON_B then
-				sprite:ReplaceSpritesheet(0, "gfx/dudes/Apollyon/" .. modconfig.getSelectedApollyonVariant() .. "/boss_075_isaac.png")
+				print(MOD:returnApollyonVariantPath())
+				sprite:ReplaceSpritesheet(0, MOD:returnApollyonVariantPath())
 				sprite:LoadGraphics()
 			elseif playertype == PlayerType.PLAYER_THEFORGOTTEN or playertype == PlayerType.PLAYER_THESOUL or playertype == PlayerType.PLAYER_THEFORGOTTEN_B then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/TheForgotten/boss_075_isaac.png")
@@ -67,13 +67,13 @@ function MOD:OnFrame()
 			end
 		end
 		if entity.Type == EntityType.ENTITY_BABY and entity.Variant == 1 and #Isaac.FindByType(102, 0, -1, false, true) >= 1 then
-			if playertype == PlayerType.PLAYER_CAIN or playertype == PlayerType.PLAYER_CAIN_B and modconfig.replaceGuardianAngelsForCain then
+			if (playertype == PlayerType.PLAYER_CAIN or playertype == PlayerType.PLAYER_CAIN_B) and modconfig.replaceGuardianAngelsForCain then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/abel.png")
 				sprite:LoadGraphics()
-			elseif playertype == PlayerType.PLAYER_LILITH or playertype == PlayerType.PLAYER_LILITH_B and modconfig.replaceGuardianAngelsForLilith then
+			elseif (playertype == PlayerType.PLAYER_LILITH or playertype == PlayerType.PLAYER_LILITH_B) and modconfig.replaceGuardianAngelsForLilith then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Lilith/incubus.png")
 				sprite:LoadGraphics()
-			elseif playertype == PlayerType.PLAYER_JACOB or playertype == PlayerType.PLAYER_JACOB_B or playertype == PlayerType.PLAYER_JACOB2_B and modconfig.replaceGuardianAngelsForJacob then
+			elseif (playertype == PlayerType.PLAYER_JACOB or playertype == PlayerType.PLAYER_JACOB_B or playertype == PlayerType.PLAYER_JACOB2_B) and modconfig.replaceGuardianAngelsForJacob then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Jacob/esaujr.png")
 				sprite:LoadGraphics()
 			end
@@ -202,6 +202,30 @@ function MOD:LoadModData()
 			modconfig[tostring[i]] = SaveState.replaceGuardianAngelsForJacob[i]
 		end
 	end
+end
+
+
+--fixes for invisible characters
+function MOD:returnJudasVariantPath()
+	return "gfx/dudes/Judas/" .. noSpace(modconfig.getSelectedJudasVariant())  .. "/boss_075_isaac.png"
+end
+
+function MOD:returnAzazelVariantPath()
+	return "gfx/dudes/Azazel/" .. noSpace(modconfig.getSelectedAzazelVariant())  .. "/boss_075_isaac.png"
+end
+
+function MOD:returnLazarusVariantPath()
+	return "gfx/dudes/Lazarus/" .. noSpace(modconfig.getSelectedLazarusVariant())  .. "/boss_075_isaac.png"
+end
+
+function MOD:returnApollyonVariantPath()
+	return "gfx/dudes/Apollyon/" .. noSpace(modconfig.getSelectedApollyonVariant())  .. "/boss_075_isaac.png"
+end
+
+function noSpace(str)
+
+	local normalisedString = string.gsub(str, "%s+", "")
+	return normalisedString
 end
 
 MOD:AddCallback(ModCallbacks.MC_POST_NPC_INIT, MOD.initVars, EntityType.ENTITY_ISAAC)
