@@ -15,67 +15,67 @@ function MOD:OnFrame()
 		if entity.Type == 102 and entity.Variant == 0 then 
 			if data == false then
 				data = true
-				if playertype == PlayerType.PLAYER_ISAAC or playertype == PlayerType.PLAYER_ISAAC_B then 	
+				if playertype == PlayerType.PLAYER_MAGDALENE or playertype == PlayerType.PLAYER_MAGDALENE_B then 	
 						sprite:ReplaceSpritesheet(0, "gfx/dudes/Magdalene/boss_075_isaac.png")
 						sprite:LoadGraphics()
 			
-				elseif playertype == 2 or playertype == 23 then 				
+				elseif playertype == PlayerType.PLAYER_CAIN or playertype == PlayerType.PLAYER_CAIN_B then 				
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 3 or playertype == 24 or playertype == 12 then 
+				elseif playertype == PlayerType.PLAYER_JUDAS or playertype == PlayerType.PLAYER_JUDAS_B or playertype == PlayerType.PLAYER_BLACKJUDAS then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Judas/boss_075_isaac.png")
 					sprite:LoadGraphics()
 				
-				elseif playertype == 4 or playertype == 25 then 
+				elseif playertype == PlayerType.PLAYER_BLUEBABY or playertype == PlayerType.PLAYER_BLUEBABY_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/BlueBaby/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 5 or playertype == 26 then 
+				elseif playertype == PlayerType.PLAYER_EVE or playertype == PlayerType.PLAYER_EVE_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Eve/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 6 or playertype == 27 then 
+				elseif playertype == PlayerType.PLAYER_SAMSON or playertype == PlayerType.PLAYER_SAMSON_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Samson/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 7 or playertype == 28 then 
+				elseif playertype == PlayerType.PLAYER_AZAZEL or playertype == PlayerType.PLAYER_AZAZEL_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Azazel/boss_075_isaac.png")
 					sprite:LoadGraphics()
 		
-				elseif playertype == 8 or playertype == 29 or playertype == 38 or playertype == 11 then 
+				elseif playertype == PlayerType.PLAYER_LAZARUS or PlayerType.PLAYER_LAZARUS2 or playertype == PlayerType.PLAYER_LAZARUS_B or playertype == PlayerType.PLAYER_LAZARUS2_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Lazarus/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 9 or playertype == 30 then 
+				elseif playertype == PlayerType.PLAYER_EDEN or playertype == PlayerType.PLAYER_EDEN_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Eden/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 10 or playertype == 31 then 
+				elseif playertype == PlayerType.PLAYER_THELOST or playertype == PlayerType.PLAYER_THELOST_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/TheLost/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 13 or playertype == 32 then 
+				elseif playertype == PlayerType.PLAYER_LILITH or playertype == PlayerType.PLAYER_LILITH_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Lilith/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 14 or playertype == 33 then 
+				elseif playertype == PlayerType.PLAYER_KEEPER or playertype == PlayerType.PLAYER_KEEPER_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Keeper/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 15 or playertype == 34 then 
+				elseif playertype == PlayerType.PLAYER_APOLLYON or playertype == PlayerType.PLAYER_APOLLYON_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Apollyon/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 16 or playertype == 17 or playertype == 35 then
+				elseif playertype == PlayerType.PLAYER_THEFORGOTTEN or playertype == PlayerType.PLAYER_THESOUL or playertype == PlayerType.PLAYER_THEFORGOTTEN_B then
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/TheForgotten/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 18 or playertype == 36 then 
+				elseif playertype == PlayerType.PLAYER_BETHANY or playertype == PlayerType.PLAYER_BETHANY_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Bethany/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
-				elseif playertype == 19 or playertype == 37 or playertype == 39 then 
+				elseif playertype == PlayerType.PLAYER_JACOB or playertype == PlayerType.PLAYER_JACOB_B or playertype == PlayerType.PLAYER_JACOB2_B then 
 					sprite:ReplaceSpritesheet(0, "gfx/dudes/Jacob/boss_075_isaac.png")
 					sprite:LoadGraphics()
 			
