@@ -1,13 +1,7 @@
 local MOD = RegisterMod("Character Based Isaac", 1)
-local game = Game()
-local player = Isaac.GetPlayer(0)
-local Level = Game():GetLevel()
 local spawnedCorpse = {}
-local corpseSpawned = false
 function MOD:OnFrame()
-	local room = game:GetRoom()
 	local playertype = Isaac.GetPlayer(0):GetPlayerType()
-	--local entity = Isaac.FindByType(102, 0, -1) 
 	for _, entity in pairs(Isaac.GetRoomEntities())	do
 		local sprite = entity:GetSprite()
 		local data = false
