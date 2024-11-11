@@ -3,14 +3,17 @@
     <name>Better Unique Isaac Fight</name>
     <directory>better_unique_isaac_fight</directory>
     <id>3200941142</id>
-    <description>That mod is a reworked version of Unique Isaac Boss Fight created by Laraz (available here: https://steamcommunity.com/sharedfiles/filedetails/?id=2563988750)
+    <description>That mod is a reworked version of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2563988750]Unique Isaac Boss Fight[/url] created by Laraz created for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2847697646]Improved &amp; Reworked Foes[/url]
 
-Reworked Enemies and Bosses is highly recommended
+Unique to this mod:
+- Lazarus and Judas won't fight their postmortem versions (Lazarus II and Dark Judas) but instead they'll fight against purified version of themselves*
+- Azazel's spirite has been replaced by Repented Azazel from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3329555283]Salvation[/url]*
 
-Main changes between this mod and Laraz' version:
-- All sprites are remade in mind of Reworked Foes mod
-- Lazarus and Judas won't fight their postmortem versions (Lazarus II and Dark Judas) but instead they'll fight against purified version of themselfs
-- Azazel's spirite has been replaced by Repented Azazel from Salvation mod</description>
+Carried over from predecessor:
+- Resprited Angelic Baby while playing as Cain, Lilith or Jacob*
+- &quot;Leaving body&quot; mechanic for Lost and Soul
+
+* These changes are now configurable via Mod Config Menu</description>
     <version>1.2</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
