@@ -29,7 +29,6 @@ end
 
 --- @param player EntityPlayer
 --- @param sprite Sprite
---- @return nil
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
 	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png"
 	sprite:ReplaceSpritesheet(0, spritePath)
@@ -68,6 +67,8 @@ function betterUniqueIsaacFight:animateCorpse(corpse)
 	sprite:Play("2EvolveDead")
 end
 
+--- method for killing Isaac's body for The Lost and The Soul
+--- @param npc EntityType
 function betterUniqueIsaacFight:killMyCorpse(npc)
 	local playertype = Isaac.GetPlayer(0):GetPlayerType()
 	if not npc or npc.Variant ~= 0 then
@@ -85,7 +86,7 @@ function betterUniqueIsaacFight:killMyCorpse(npc)
 	end
 end
 
--- save config to data directory
+--- save config to data directory
 function betterUniqueIsaacFight:saveModData()
 	SaveState.selectedApollyonVariant = {}
 	SaveState.selectedAzazelVariant = {}
@@ -126,7 +127,7 @@ function betterUniqueIsaacFight:saveModData()
 	betterUniqueIsaacFight:SaveData(json.encode(SaveState))
 end
 
--- Load data from file
+--- Load data from file
 function betterUniqueIsaacFight:LoadModData()
 	if betterUniqueIsaacFight:HasData() then
 		SaveState = json.decode(betterUniqueIsaacFight:LoadData())
@@ -162,7 +163,7 @@ function betterUniqueIsaacFight:LoadModData()
 end
 
 
---fixes for invisible characters
+--- fixes for invisible characters
 function betterUniqueIsaacFight:returnJudasVariantPath()
 	return "gfx/dudes/Judas/" .. noSpace(modconfig.getSelectedJudasVariant())  .. "/boss_075_isaac.png"
 end
