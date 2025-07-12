@@ -1,4 +1,4 @@
-local MOD = RegisterMod("Character Based Isaac", 1)
+local modConfig = {}
 
 local characterVariants = {
     Apollyon = {
@@ -20,7 +20,7 @@ local characterVariants = {
     }
 }
 
-modConfigOptions = {
+modConfig.Options = {
     selectedVariant = {
         Apollyon = 1,
         Azazel = 1,
@@ -34,7 +34,7 @@ modConfigOptions = {
     }
 }
 
-function modConfigOptions.AddModConfigMenu()
+function modConfig.AddModConfigMenu()
     if ModConfigMenu == nil then
         return
     end
@@ -42,13 +42,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type=ModConfigMenu.OptionType.NUMBER,
         CurrentSetting = function()
-            return modConfigOptions.selectedVariant.Apollyon
+            return modConfig.Options.selectedVariant.Apollyon
         end,
         Display = function()
-            return "Apollyon variant: " .. characterVariants["Apollyon"][modConfigOptions.selectedVariant.Apollyon]
+            return "Apollyon variant: " .. characterVariants["Apollyon"][modConfig.Options.selectedVariant.Apollyon]
         end,
         OnChange = function(value)
-            modConfigOptions.selectedVariant.Apollyon = value
+            modConfig.Options.selectedVariant.Apollyon = value
         end,
         Info = {"Choose the variant of Isaac boss being replaced by Apollyon"},
         Minimum = 1,
@@ -59,13 +59,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type=ModConfigMenu.OptionType.NUMBER,
         CurrentSetting = function()
-            return modConfigOptions.selectedVariant.Azazel
+            return modConfig.Options.selectedVariant.Azazel
         end,
         Display = function()
-            return "Azazel variant: " .. characterVariants["Azazel"][modConfigOptions.selectedVariant.Azazel]
+            return "Azazel variant: " .. characterVariants["Azazel"][modConfig.Options.selectedVariant.Azazel]
         end,
         OnChange = function(value)
-            modConfigOptions.selectedVariant.Azazel = value
+            modConfig.Options.selectedVariant.Azazel = value
         end,
         Info = {"Choose the variant of Isaac boss being replaced by Azazel"},
         Minimum = 1,
@@ -76,13 +76,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type=ModConfigMenu.OptionType.NUMBER,
         CurrentSetting = function()
-            return modConfigOptions.selectedVariant.Judas
+            return modConfig.Options.selectedVariant.Judas
         end,
         Display = function()
-            return "Judas variant: " .. characterVariants["Judas"][modConfigOptions.selectedVariant.Judas]
+            return "Judas variant: " .. characterVariants["Judas"][modConfig.Options.selectedVariant.Judas]
         end,
         OnChange = function(value)
-            modConfigOptions.selectedVariant.Judas = value
+            modConfig.Options.selectedVariant.Judas = value
         end,
         Info = {"Choose the variant of Isaac boss being replaced by Judas"},
         Minimum = 1,
@@ -93,13 +93,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type=ModConfigMenu.OptionType.NUMBER,
         CurrentSetting = function()
-            return modConfigOptions.selectedVariant.Lazarus
+            return modConfig.Options.selectedVariant.Lazarus
         end,
         Display = function()
-            return "Lazarus variant: " .. characterVariants["Lazarus"][modConfigOptions.selectedVariant.Lazarus]
+            return "Lazarus variant: " .. characterVariants["Lazarus"][modConfig.Options.selectedVariant.Lazarus]
         end,
         OnChange = function(value)
-            modConfigOptions.selectedVariant.Lazarus = value
+            modConfig.Options.selectedVariant.Lazarus = value
         end,
         Info = {"Choose the variant of Isaac boss being replaced by Lazarus"},
         Minimum = 1,
@@ -110,13 +110,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type = ModConfigMenu.OptionType.BOOLEAN,
         CurrentSetting = function()
-            return modConfigOptions.replaceAngelicBabyForChar.Cain
+            return modConfig.Options.replaceAngelicBabyForChar.Cain
         end,
         Display = function()
-            return "Replace Angelic Babies with Abel " .. (modConfigOptions.replaceAngelicBabyForChar.Cain and "On" or "Off")
+            return "Replace Angelic Babies with Abel " .. (modConfig.Options.replaceAngelicBabyForChar.Cain and "On" or "Off")
         end,
         OnChange = function(value)
-            modConfigOptions.replaceAngelicBabyForChar.Cain = value
+            modConfig.Options.replaceAngelicBabyForChar.Cain = value
         end,
         Info = {"Should Angelic Babies be replaced with Abel during Cain fight?"}
     })
@@ -124,13 +124,13 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type = ModConfigMenu.OptionType.BOOLEAN,
         CurrentSetting = function()
-            return modConfigOptions.replaceAngelicBabyForChar.Lilith
+            return modConfig.Options.replaceAngelicBabyForChar.Lilith
         end,
         Display = function()
-            return "Replace Angelic Babies with Incubuses " .. (modConfigOptions.replaceAngelicBabyForChar.Lilith and "On" or "Off")
+            return "Replace Angelic Babies with Incubuses " .. (modConfig.Options.replaceAngelicBabyForChar.Lilith and "On" or "Off")
         end,
         OnChange = function(value)
-            modConfigOptions.replaceAngelicBabyForChar.Lilith = value
+            modConfig.Options.replaceAngelicBabyForChar.Lilith = value
         end,
         Info = {"Should Angelic Babies be replaced with Incubuses during Lilith fight?"}
     })
@@ -138,32 +138,32 @@ function modConfigOptions.AddModConfigMenu()
     ModConfigMenu.AddSetting("Better Unique Isaac Fight", {
         Type = ModConfigMenu.OptionType.BOOLEAN,
         CurrentSetting = function()
-            return modConfigOptions.replaceAngelicBabyForChar.Jacob
+            return modConfig.Options.replaceAngelicBabyForChar.Jacob
         end,
         Display = function()
-            return "Replace Angelic Babies with Esau Jr " .. (modConfigOptions.replaceAngelicBabyForChar.Jacob and "On" or "Off")
+            return "Replace Angelic Babies with Esau Jr " .. (modConfig.Options.replaceAngelicBabyForChar.Jacob and "On" or "Off")
         end,
         OnChange = function(value)
-            modConfigOptions.replaceAngelicBabyForChar.Jacob = value
+            modConfig.Options.replaceAngelicBabyForChar.Jacob = value
         end,
         Info = {"Should Angelic Babies be replaced with Esau Jr during Jacob fight?"}
     })
 end
 
-function modConfigOptions.getSelectedApollyonVariant()
-    return characterVariants["Apollyon"][modConfigOptions.selectedVariant.Apollyon]
+function modConfig.getSelectedApollyonVariant()
+    return characterVariants["Apollyon"][modConfig.Options.selectedVariant.Apollyon]
 end
 
-function modConfigOptions.getSelectedAzazelVariant()
-    return characterVariants["Azazel"][modConfigOptions.selectedVariant.Azazel]
+function modConfig.getSelectedAzazelVariant()
+    return characterVariants["Azazel"][modConfig.Options.selectedVariant.Azazel]
 end
 
-function modConfigOptions.getSelectedJudasVariant()
-    return characterVariants["Judas"][modConfigOptions.selectedVariant.Judas]
+function modConfig.getSelectedJudasVariant()
+    return characterVariants["Judas"][modConfig.Options.selectedVariant.Judas]
 end
 
-function modConfigOptions.getSelectedLazarusVariant()
-    return characterVariants["Lazarus"][modConfigOptions.selectedVariant.Lazarus]
+function modConfig.getSelectedLazarusVariant()
+    return characterVariants["Lazarus"][modConfig.Options.selectedVariant.Lazarus]
 end
 
-return modConfigOptions
+return modConfig
