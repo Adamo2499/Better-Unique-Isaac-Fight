@@ -13,13 +13,13 @@ function betterUniqueIsaacFight:OnFrame()
 			betterUniqueIsaacFight:replaceIsaac(player,sprite)
 		end
 		if entity.Type == EntityType.ENTITY_BABY and entity.Variant == 1 and #Isaac.FindByType(102, 0, -1, false, true) >= 1 then
-			if (playertype == PlayerType.PLAYER_CAIN or playertype == PlayerType.PLAYER_CAIN_B) and modconfig.replaceGuardianAngelsForCain then
+			if (player:GetPlayerType() == PlayerType.PLAYER_CAIN or player:GetPlayerType() == PlayerType.PLAYER_CAIN_B) and modconfig.replaceGuardianAngelsForCain then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/abel.png")
 				sprite:LoadGraphics()
-			elseif (playertype == PlayerType.PLAYER_LILITH or playertype == PlayerType.PLAYER_LILITH_B) and modconfig.replaceGuardianAngelsForLilith then
+			elseif (player:GetPlayerType() == PlayerType.PLAYER_LILITH or player:GetPlayerType() == PlayerType.PLAYER_LILITH_B) and modconfig.replaceGuardianAngelsForLilith then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Lilith/incubus.png")
 				sprite:LoadGraphics()
-			elseif (playertype == PlayerType.PLAYER_JACOB or playertype == PlayerType.PLAYER_JACOB_B or playertype == PlayerType.PLAYER_JACOB2_B) and modconfig.replaceGuardianAngelsForJacob then
+			elseif (player:GetPlayerType() == PlayerType.PLAYER_JACOB or player:GetPlayerType() == PlayerType.PLAYER_JACOB_B or player:GetPlayerType() == PlayerType.PLAYER_JACOB2_B) and modconfig.replaceGuardianAngelsForJacob then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Jacob/esaujr.png")
 				sprite:LoadGraphics()
 			end
