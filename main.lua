@@ -2,8 +2,9 @@ local betterUniqueIsaacFight = RegisterMod("Better Unique Isaac Fight", 1)
 local spawnedCorpse = {}
 local SaveState = {}
 local json = require("json")
-local modConfig = require("config")
-modConfig.AddModConfigMenu()
+local modConfig = require("mod_config")
+
+modConfig:AddModConfigMenu()
 
 function betterUniqueIsaacFight:OnFrame()
 	local player = Isaac.GetPlayer(0)
@@ -30,7 +31,7 @@ end
 --- @param player EntityPlayer
 --- @param sprite Sprite
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
-	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png"
+	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png\n"
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
 end
