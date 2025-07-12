@@ -2,8 +2,8 @@ local betterUniqueIsaacFight = RegisterMod("Better Unique Isaac Fight", 1)
 local spawnedCorpse = {}
 local SaveState = {}
 local json = require("json")
-local modconfig = require("variantsconfig")
-modconfig.AddModConfigMenu()
+local modConfig = require("config")
+modConfig.AddModConfigMenu()
 
 function betterUniqueIsaacFight:OnFrame()
 	local player = Isaac.GetPlayer(0)
@@ -13,13 +13,13 @@ function betterUniqueIsaacFight:OnFrame()
 			betterUniqueIsaacFight:replaceIsaac(player,sprite)
 		end
 		if entity.Type == EntityType.ENTITY_BABY and entity.Variant == 1 and #Isaac.FindByType(102, 0, -1, false, true) >= 1 then
-			if (player:GetPlayerType() == PlayerType.PLAYER_CAIN or player:GetPlayerType() == PlayerType.PLAYER_CAIN_B) and modconfig.replaceGuardianAngelsForCain then
+			if (player:GetPlayerType() == PlayerType.PLAYER_CAIN or player:GetPlayerType() == PlayerType.PLAYER_CAIN_B) and modConfig.Options.replaceAngelicBabyForChar.Cain then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/abel.png")
 				sprite:LoadGraphics()
-			elseif (player:GetPlayerType() == PlayerType.PLAYER_LILITH or player:GetPlayerType() == PlayerType.PLAYER_LILITH_B) and modconfig.replaceGuardianAngelsForLilith then
+			elseif (player:GetPlayerType() == PlayerType.PLAYER_LILITH or player:GetPlayerType() == PlayerType.PLAYER_LILITH_B) and modConfig.Options.replaceAngelicBabyForChar.Lilith then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Lilith/incubus.png")
 				sprite:LoadGraphics()
-			elseif (player:GetPlayerType() == PlayerType.PLAYER_JACOB or player:GetPlayerType() == PlayerType.PLAYER_JACOB_B or player:GetPlayerType() == PlayerType.PLAYER_JACOB2_B) and modconfig.replaceGuardianAngelsForJacob then
+			elseif (player:GetPlayerType() == PlayerType.PLAYER_JACOB or player:GetPlayerType() == PlayerType.PLAYER_JACOB_B or player:GetPlayerType() == PlayerType.PLAYER_JACOB2_B) and modConfig.Options.replaceAngelicBabyForChar.Jacob then
 				sprite:ReplaceSpritesheet(0, "gfx/dudes/Jacob/esaujr.png")
 				sprite:LoadGraphics()
 			end
@@ -96,32 +96,32 @@ function betterUniqueIsaacFight:saveModData()
 	SaveState.replaceGuardianAngelsForLilith = {}
 	SaveState.replaceGuardianAngelsForJacob = {}
 
-	for i,_ in pairs(modconfig) do
-		SaveState.selectedApollyonVariant[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.selectedApollyonVariant[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.selectedAzazelVariant[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.selectedAzazelVariant[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.selectedJudasVariant[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.selectedJudasVariant[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.selectedLazarusVariant[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.selectedLazarusVariant[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.replaceGuardianAngelsForCain[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.replaceGuardianAngelsForCain[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.replaceGuardianAngelsForLilith[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.replaceGuardianAngelsForLilith[tostring(i)] = modConfig[i]
 	end
 
-	for i,_ in pairs(modconfig) do
-		SaveState.replaceGuardianAngelsForJacob[tostring(i)] = modconfig[i]
+	for i,_ in pairs(modConfig) do
+		SaveState.replaceGuardianAngelsForJacob[tostring(i)] = modConfig[i]
 	end
 
 	betterUniqueIsaacFight:SaveData(json.encode(SaveState))
@@ -133,31 +133,31 @@ function betterUniqueIsaacFight:LoadModData()
 		SaveState = json.decode(betterUniqueIsaacFight:LoadData())
 
 		for i,_ in pairs(SaveState.selectedApollyonVariant) do
-			modconfig[tostring[i]] = SaveState.selectedApollyonVariant[i]
+			modConfig[tostring[i]] = SaveState.selectedApollyonVariant[i]
 		end
 
 		for i,_ in pairs(SaveState.selectedAzazelVariant) do
-			modconfig[tostring[i]] = SaveState.selectedAzazelVariant[i]
+			modConfig[tostring[i]] = SaveState.selectedAzazelVariant[i]
 		end
 
 		for i,_ in pairs(SaveState.selectedJudasVariant) do
-			modconfig[tostring[i]] = SaveState.selectedJudasVariant[i]
+			modConfig[tostring[i]] = SaveState.selectedJudasVariant[i]
 		end
 
 		for i,_ in pairs(SaveState.selectedLazarusVariant) do
-			modconfig[tostring[i]] = SaveState.selectedLazarusVariant[i]
+			modConfig[tostring[i]] = SaveState.selectedLazarusVariant[i]
 		end
 
 		for i,_ in pairs(SaveState.replaceGuardianAngelsForCain) do
-			modconfig[tostring[i]] = SaveState.replaceGuardianAngelsForCain[i]
+			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForCain[i]
 		end
 
 		for i,_ in pairs(SaveState.replaceGuardianAngelsForLilith) do
-			modconfig[tostring[i]] = SaveState.replaceGuardianAngelsForLilith[i]
+			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForLilith[i]
 		end
 
 		for i,_ in pairs(SaveState.replaceGuardianAngelsForJacob) do
-			modconfig[tostring[i]] = SaveState.replaceGuardianAngelsForJacob[i]
+			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForJacob[i]
 		end
 	end
 end
@@ -165,19 +165,19 @@ end
 
 --- fixes for invisible characters
 function betterUniqueIsaacFight:returnJudasVariantPath()
-	return "gfx/dudes/Judas/" .. noSpace(modconfig.getSelectedJudasVariant())  .. "/boss_075_isaac.png"
+	return "gfx/dudes/Judas/" .. noSpace(modConfig.getSelectedJudasVariant())  .. "/boss_075_isaac.png"
 end
 
 function betterUniqueIsaacFight:returnAzazelVariantPath()
-	return "gfx/dudes/Azazel/" .. noSpace(modconfig.getSelectedAzazelVariant())  .. "/boss_075_isaac.png"
+	return "gfx/dudes/Azazel/" .. noSpace(modConfig.getSelectedAzazelVariant())  .. "/boss_075_isaac.png"
 end
 
 function betterUniqueIsaacFight:returnLazarusVariantPath()
-	return "gfx/dudes/Lazarus/" .. noSpace(modconfig.getSelectedLazarusVariant())  .. "/boss_075_isaac.png"
+	return "gfx/dudes/Lazarus/" .. noSpace(modConfig.getSelectedLazarusVariant())  .. "/boss_075_isaac.png"
 end
 
 function betterUniqueIsaacFight:returnApollyonVariantPath()
-	return "gfx/dudes/Apollyon/" .. noSpace(modconfig.getSelectedApollyonVariant())  .. "/boss_075_isaac.png"
+	return "gfx/dudes/Apollyon/" .. noSpace(modConfig.getSelectedApollyonVariant())  .. "/boss_075_isaac.png"
 end
 
 function noSpace(str)
