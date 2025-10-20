@@ -89,77 +89,14 @@ end
 
 --- save config to data directory
 function betterUniqueIsaacFight:saveModData()
-	SaveState.selectedApollyonVariant = {}
-	SaveState.selectedAzazelVariant = {}
-	SaveState.selectedJudasVariant = {}
-	SaveState.selectedLazarusVariant = {}
-	SaveState.replaceGuardianAngelsForCain = {}
-	SaveState.replaceGuardianAngelsForLilith = {}
-	SaveState.replaceGuardianAngelsForJacob = {}
-
-	for i,_ in pairs(modConfig) do
-		SaveState.selectedApollyonVariant[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.selectedAzazelVariant[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.selectedJudasVariant[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.selectedLazarusVariant[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.replaceGuardianAngelsForCain[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.replaceGuardianAngelsForLilith[tostring(i)] = modConfig[i]
-	end
-
-	for i,_ in pairs(modConfig) do
-		SaveState.replaceGuardianAngelsForJacob[tostring(i)] = modConfig[i]
-	end
-
-	betterUniqueIsaacFight:SaveData(json.encode(SaveState))
+	betterUniqueIsaacFight:SaveData(json.encode(modConfig.Options))
 end
 
 --- Load data from file
 function betterUniqueIsaacFight:LoadModData()
 	if betterUniqueIsaacFight:HasData() then
-		SaveState = json.decode(betterUniqueIsaacFight:LoadData())
-
-		for i,_ in pairs(SaveState.selectedApollyonVariant) do
-			modConfig[tostring[i]] = SaveState.selectedApollyonVariant[i]
-		end
-
-		for i,_ in pairs(SaveState.selectedAzazelVariant) do
-			modConfig[tostring[i]] = SaveState.selectedAzazelVariant[i]
-		end
-
-		for i,_ in pairs(SaveState.selectedJudasVariant) do
-			modConfig[tostring[i]] = SaveState.selectedJudasVariant[i]
-		end
-
-		for i,_ in pairs(SaveState.selectedLazarusVariant) do
-			modConfig[tostring[i]] = SaveState.selectedLazarusVariant[i]
-		end
-
-		for i,_ in pairs(SaveState.replaceGuardianAngelsForCain) do
-			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForCain[i]
-		end
-
-		for i,_ in pairs(SaveState.replaceGuardianAngelsForLilith) do
-			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForLilith[i]
-		end
-
-		for i,_ in pairs(SaveState.replaceGuardianAngelsForJacob) do
-			modConfig[tostring[i]] = SaveState.replaceGuardianAngelsForJacob[i]
-		end
+		local modOptions = json.decode(betterUniqueIsaacFight:LoadData())
+		modConfig.Options = modOptions
 	end
 end
 
