@@ -31,7 +31,7 @@ end
 --- @param player EntityPlayer
 --- @param sprite Sprite
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
-	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png\n"
+	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png"
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
 end
