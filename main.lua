@@ -1,6 +1,5 @@
 local betterUniqueIsaacFight = RegisterMod("Better Unique Isaac Fight", 1)
 local spawnedCorpse = {}
-local SaveState = {}
 local json = require("json")
 local modConfig = require("mod_config")
 
@@ -31,7 +30,9 @@ end
 --- @param player EntityPlayer
 --- @param sprite Sprite
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
-	local spritePath = "gfx/dudes/" .. player:GetName() .. "/boss_075_isaac.png"
+	local playerName = player:GetName()
+	local specialVariant = betterUniqueIsaacFight:returnCharSpecialVariant(playerName)
+	local spritePath = "gfx/dudes/" .. playerName .. specialVariant .. "/boss_075_isaac.png"
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
 end
@@ -100,26 +101,18 @@ function betterUniqueIsaacFight:LoadModData()
 	end
 end
 
-
---- fixes for invisible characters
-function betterUniqueIsaacFight:returnJudasVariantPath()
-	return "gfx/dudes/Judas/" .. noSpace(modConfig.getSelectedJudasVariant())  .. "/boss_075_isaac.png"
-end
-
-function betterUniqueIsaacFight:returnAzazelVariantPath()
-	return "gfx/dudes/Azazel/" .. noSpace(modConfig.getSelectedAzazelVariant())  .. "/boss_075_isaac.png"
-end
-
-function betterUniqueIsaacFight:returnLazarusVariantPath()
-	return "gfx/dudes/Lazarus/" .. noSpace(modConfig.getSelectedLazarusVariant())  .. "/boss_075_isaac.png"
-end
-
-function betterUniqueIsaacFight:returnApollyonVariantPath()
-	return "gfx/dudes/Apollyon/" .. noSpace(modConfig.getSelectedApollyonVariant())  .. "/boss_075_isaac.png"
-end
-
-function noSpace(str)
-	return string.gsub(str, "%s+", "")
+---return special variants for some chars
+---@param playerName string
+---@return string
+function betterUniqueIsaacFight:returnCharSpecialVariant(playerName)
+	local CHARS_WITH_SPECIAL_SPRITES = {"Judas", "Apollyon", "Azazel", "Lazarus"}
+	local specialVariant = ""
+	for _, value in ipairs(CHARS_WITH_SPECIAL_SPRITES) do
+		if value == playerName then
+			specialVariant = "/" .. modConfig.getSelectedVariantByCharName(playerName)
+		end
+	end
+	return specialVariant
 end
 
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_NPC_INIT, betterUniqueIsaacFight.initVars, EntityType.ENTITY_ISAAC)

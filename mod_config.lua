@@ -150,20 +150,25 @@ function modConfig.AddModConfigMenu()
     })
 end
 
-function modConfig.getSelectedApollyonVariant()
-    return characterVariants["Apollyon"][modConfig.Options.selectedVariant.Apollyon]
-end
+--- @param characterName string
+--- @return string
+function modConfig.getSelectedVariantByCharName(characterName)
+    print("Character name:" .. characterName)
+    local selectedVariant = ""
+    if characterName == "Apollyon" then
+        selectedVariant = characterVariants["Apollyon"][modConfig.Options.selectedVariant.Apollyon]
+    elseif characterName == "Azazel" then
+        selectedVariant = characterVariants["Azazel"][modConfig.Options.selectedVariant.Azazel]
+    elseif characterName == "Judas" then
+        selectedVariant = characterVariants["Judas"][modConfig.Options.selectedVariant.Judas]
+    elseif characterName == "Lazarus" then
+        selectedVariant = characterVariants["Lazarus"][modConfig.Options.selectedVariant.Lazarus]
+    else
+        selectedVariant = ""
+    end
 
-function modConfig.getSelectedAzazelVariant()
-    return characterVariants["Azazel"][modConfig.Options.selectedVariant.Azazel]
-end
-
-function modConfig.getSelectedJudasVariant()
-    return characterVariants["Judas"][modConfig.Options.selectedVariant.Judas]
-end
-
-function modConfig.getSelectedLazarusVariant()
-    return characterVariants["Lazarus"][modConfig.Options.selectedVariant.Lazarus]
+    print("selectedVariant (MCM): " .. selectedVariant)
+    return selectedVariant
 end
 
 return modConfig
