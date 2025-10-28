@@ -153,7 +153,6 @@ end
 --- @param characterName string
 --- @return string
 function modConfig.getSelectedVariantByCharName(characterName)
-    print("Character name:" .. characterName)
     local selectedVariant = ""
     if characterName == "Apollyon" then
         selectedVariant = characterVariants["Apollyon"][modConfig.Options.selectedVariant.Apollyon]
@@ -166,8 +165,6 @@ function modConfig.getSelectedVariantByCharName(characterName)
     else
         selectedVariant = ""
     end
-
-    print("selectedVariant (MCM): " .. selectedVariant)
     return selectedVariant
 end
 
