@@ -9,24 +9,16 @@ function betterUniqueIsaacFight:OnFrame()
 	local player = Isaac.GetPlayer(0)
 	for _, entity in pairs(Isaac.GetRoomEntities()) do
 		local sprite = entity:GetSprite()
-		if entity.Type == 102 and entity.Variant == 0 then
+		if entity.Type == EntityType.ENTITY_ISAAC and entity.Variant == 0 then
 			betterUniqueIsaacFight:replaceIsaac(player,sprite)
 		end
 		if entity.Type == EntityType.ENTITY_BABY and entity.Variant == 1 and #Isaac.FindByType(102, 0, -1, false, true) >= 1 then
-			if (player:GetPlayerType() == PlayerType.PLAYER_CAIN or player:GetPlayerType() == PlayerType.PLAYER_CAIN_B) and modConfig.Options.replaceAngelicBabyForChar.Cain then
-				sprite:ReplaceSpritesheet(0, "gfx/dudes/Cain/abel.png")
-				sprite:LoadGraphics()
-			elseif (player:GetPlayerType() == PlayerType.PLAYER_LILITH or player:GetPlayerType() == PlayerType.PLAYER_LILITH_B) and modConfig.Options.replaceAngelicBabyForChar.Lilith then
-				sprite:ReplaceSpritesheet(0, "gfx/dudes/Lilith/incubus.png")
-				sprite:LoadGraphics()
-			elseif (player:GetPlayerType() == PlayerType.PLAYER_JACOB or player:GetPlayerType() == PlayerType.PLAYER_JACOB_B or player:GetPlayerType() == PlayerType.PLAYER_JACOB2_B) and modConfig.Options.replaceAngelicBabyForChar.Jacob then
-				sprite:ReplaceSpritesheet(0, "gfx/dudes/Jacob/esaujr.png")
-				sprite:LoadGraphics()
-			end
+			betterUniqueIsaacFight:replaceAngelicBaby(player,sprite)
 		end
 	end
 end
 
+--- replace Isaac's sprite based on char name and if Last Judgement mod is enabled
 --- @param player EntityPlayer
 --- @param sprite Sprite
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
@@ -42,6 +34,19 @@ function betterUniqueIsaacFight:replaceIsaac(player, sprite)
 	
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
+end
+
+--- replace angelic baby sprite based on char name and MCM settings
+--- @param player EntityPlayer
+--- @param sprite Sprite
+function betterUniqueIsaacFight:replaceAngelicBaby(player,sprite)
+	local playerName = player:GetName()
+	local spritePath = ""
+	if modConfig.shouldAngelicBabyBeRespited(playerName) then
+		spritePath = "gfx/dudes/" .. playerName .. "/angelicbaby.png"
+		sprite:ReplaceSpritesheet(0, spritePath)
+		sprite:LoadGraphics()		
+	end
 end
 
 --- @param npc EntityType

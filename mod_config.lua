@@ -168,4 +168,17 @@ function modConfig.getSelectedVariantByCharName(characterName)
     return selectedVariant
 end
 
+function modConfig.shouldAngelicBabyBeRespited(characterName)
+    local shouldAngelicBabyBeRespited = false
+    if characterName == "Cain" then
+        shouldAngelicBabyBeRespited = modConfig.Options.replaceAngelicBabyForChar.Cain
+    elseif characterName == "Lilith" then
+        shouldAngelicBabyBeRespited = modConfig.Options.replaceAngelicBabyForChar.Lilith
+    elseif characterName == "Jacob" then
+        shouldAngelicBabyBeRespited = modConfig.Options.replaceAngelicBabyForChar.Jacob
+    end
+    
+    return shouldAngelicBabyBeRespited
+end
+
 return modConfig
