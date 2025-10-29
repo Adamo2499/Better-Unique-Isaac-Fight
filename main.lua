@@ -33,7 +33,13 @@ function betterUniqueIsaacFight:replaceIsaac(player, sprite)
 	local playerName = player:GetName()
 	local lastJudgementPrefix = betterUniqueIsaacFight:addLastJudgementPrefix()
 	local specialVariant = betterUniqueIsaacFight:returnCharSpecialVariant(playerName)
-	local spritePath = "gfx/dudes/" .. playerName .. lastJudgementPrefix .. specialVariant .. "/boss_075_isaac.png"
+	local spritePath = ""
+	if player:GetPlayerType() <= PlayerType.PLAYER_JACOB2_B then
+		spritePath = "gfx/dudes/" .. playerName .. lastJudgementPrefix .. specialVariant .. "/boss_075_isaac.png"
+	else
+		spritePath = "gfx/dudes/Isaac/" .. lastJudgementPrefix .. "/boss_075_isaac.png"
+	end
+	
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
 end
