@@ -13,8 +13,13 @@ Carried over from predecessor:
 - Resprited Angelic Baby while playing as Cain, Lilith or Jacob*
 - &quot;Leaving body&quot; mechanic for Lost and Soul
 
-* These changes are now configurable via Mod Config Menu</description>
-    <version>1.2</version>
+* These changes are now configurable via Mod Config Menu
+
+Known issues:
+- Whike having installed either [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3343815332]LastJudgement[/url] or [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3416652487]Last Judgement Resprites for Reworked Foes[/url] alongside this mod, Isaac's sprited will be corrupted bc LJ takes priority over this mod. I'm working on way to make it compatible
+
+You can also download a mirror from [url=https://github.com/Adamo2499/Better-Unique-Isaac-Fight]Github[/url]</description>
+    <version>1.3</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Bosses"/>
