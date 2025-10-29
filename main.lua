@@ -31,8 +31,9 @@ end
 --- @param sprite Sprite
 function betterUniqueIsaacFight:replaceIsaac(player, sprite)
 	local playerName = player:GetName()
+	local lastJudgementPrefix = betterUniqueIsaacFight:addLastJudgementPrefix()
 	local specialVariant = betterUniqueIsaacFight:returnCharSpecialVariant(playerName)
-	local spritePath = "gfx/dudes/" .. playerName .. specialVariant .. "/boss_075_isaac.png"
+	local spritePath = "gfx/dudes/" .. playerName .. lastJudgementPrefix .. specialVariant .. "/boss_075_isaac.png"
 	sprite:ReplaceSpritesheet(0, spritePath)
 	sprite:LoadGraphics()
 end
@@ -113,6 +114,17 @@ function betterUniqueIsaacFight:returnCharSpecialVariant(playerName)
 		end
 	end
 	return specialVariant
+end
+
+---return prefix for Last Judgement sprites
+---returns string
+function betterUniqueIsaacFight:addLastJudgementPrefix()
+	local lastJudgementPrefix = ""
+	if LastJudgement then
+		lastJudgementPrefix = "/LJ"
+	end
+
+	return lastJudgementPrefix
 end
 
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_NPC_INIT, betterUniqueIsaacFight.initVars, EntityType.ENTITY_ISAAC)
