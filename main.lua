@@ -50,7 +50,7 @@ function betterUniqueIsaacFight:initVars(npc)
 end
 
 --- @param npc EntityType
-function betterUniqueIsaacFight:YO(npc)
+function betterUniqueIsaacFight:spawnIsaacBody(npc)
 	local playertype = Isaac.GetPlayer(0):GetPlayerType()
 	if not npc or npc.Variant ~= 0 then
 		return
@@ -78,7 +78,7 @@ end
 
 --- method for killing Isaac's body for The Lost and The Soul
 --- @param npc EntityType
-function betterUniqueIsaacFight:killMyCorpse(npc)
+function betterUniqueIsaacFight:killIsaacsBody(npc)
 	local playertype = Isaac.GetPlayer(0):GetPlayerType()
 	if not npc or npc.Variant ~= 0 then
 		return
@@ -134,8 +134,8 @@ function betterUniqueIsaacFight:addLastJudgementPrefix()
 end
 
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_NPC_INIT, betterUniqueIsaacFight.initVars, EntityType.ENTITY_ISAAC)
-betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_NPC_UPDATE, betterUniqueIsaacFight.YO, EntityType.ENTITY_ISAAC)
+betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_NPC_UPDATE, betterUniqueIsaacFight.spawnIsaacBody, EntityType.ENTITY_ISAAC)
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_UPDATE, betterUniqueIsaacFight.OnFrame)
-betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, betterUniqueIsaacFight.killMyCorpse, EntityType.ENTITY_ISAAC)
+betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, betterUniqueIsaacFight.killIsaacsBody, EntityType.ENTITY_ISAAC)
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, betterUniqueIsaacFight.saveModData)
 betterUniqueIsaacFight:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, betterUniqueIsaacFight.LoadModData)
