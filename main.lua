@@ -64,7 +64,13 @@ function betterUniqueIsaacFight:spawnIsaacBody(npc)
 	local sprite = npc:GetSprite()
 
 	if sprite:IsFinished("2Evolve") and not spawnedCorpse[npc.Index] then
-		if playertype == 10 or playertype == 16 or playertype == 17 or playertype == 35 or playertype == 31 then
+		if 
+			playertype == PlayerType.PLAYER_THELOST
+			or playertype == PlayerType.PLAYER_THEFORGOTTEN
+			or playertype == PlayerType.PLAYER_THESOUL
+			or playertype == PlayerType.PLAYER_THELOST_B
+			or playertype == PlayerType.PLAYER_THEFORGOTTEN_B
+		then
 			local newCorpse = Isaac.Spawn(102, 0, 1, npc.Position, Vector(0.0, 0.0), npc)
 			betterUniqueIsaacFight:animateCorpse(newCorpse)
 			spawnedCorpse[npc.Index] = newCorpse
